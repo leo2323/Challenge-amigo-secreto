@@ -11,6 +11,7 @@ function agregarAmigo() {
   actualizarLista();
 
   console.log(amigoSecreto);
+  cajaVacia()
 }
 function actualizarLista(params) {
   const listarAmigo = document.getElementById("listaAmigos");
@@ -21,6 +22,7 @@ function actualizarLista(params) {
     li.textContent = listaAmigoSecreto;
     listarAmigo.appendChild(li);
   });
+ 
 }
 
 function sortearAmigo() {
@@ -31,7 +33,9 @@ function sortearAmigo() {
   const amigoAleatorio = Math.floor(Math.random() * amigoSecreto.length);
   const resultadoSorteo = amigoSecreto[amigoAleatorio];
   const listaUl = document.getElementById("resultado");
-  listaUl.innerHTML = `<li>${resultadoSorteo}</li>`;
+  listaUl.innerHTML = `<li> el amigo sorteado es : ${resultadoSorteo}</li>`;
+  detenerSorteo()
+  
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -40,3 +44,19 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("click", agregarAmigo);
   document.getElementById("btnSortear").addEventListener("click", sortearAmigo);
 });
+
+//LIMPIAMOS INPUT
+function cajaVacia() {
+  document.querySelector("#amigo").value = "";
+
+  
+}
+
+function detenerSorteo() {
+  if (amigoSecreto.length >=0) {
+    amigoSecreto.splice(0)
+    
+  }
+  
+  
+}
